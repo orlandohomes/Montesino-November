@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Analysis | 15006 Montesino Dr, Orlando FL 32828</title>
+<style>
+:root{
+  --navy:#14263f;
+  --navy-soft:#22405f;
+  --forest:#1d3a30;
+  --gold:#c0a15c;
+  --gold-pale:#eee5d0;
+  --paper:#ffffff;
+  --shell:#f7f6f3;
+  --rule:#dcd8d0;
+  --ink:#232323;
+  --ink-soft:#5d6470;
+  --green:#2f6b4f;
+  --amber:#a9741f;
+  --red:#8f3230;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Helvetica Neue",Helvetica,-apple-system,"Segoe UI",Arial,sans-serif;
+  background:var(--shell);
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:1040px;margin:0 auto;background:var(--paper);}
+.pad{padding:0 56px}
+
+/* ---------- masthead ---------- */
+.masthead{background:var(--navy);color:#fff;padding:44px 56px 38px}
+.eyebrow{
+  font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+.masthead h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;font-size:37px;line-height:1.15;letter-spacing:-.01em;
+  margin:16px 0 6px;
+}
+.masthead .sub{font-size:15px;color:#b9c4d2;letter-spacing:.02em}
+.rule-gold{height:2px;background:var(--gold);width:64px;margin:22px 0 20px}
+.byline{display:flex;flex-wrap:wrap;gap:34px;font-size:12.5px;color:#9fb0c2}
+.byline b{display:block;color:#fff;font-weight:500;font-size:13.5px;letter-spacing:.01em}
+
+/* ---------- structure ---------- */
+section{padding:44px 0 6px}
+section + section{border-top:1px solid var(--rule)}
+h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;font-size:24px;color:var(--navy);letter-spacing:-.01em;
+  margin-bottom:6px;
+}
+h2 .num{
+  font-family:"Helvetica Neue",Helvetica,sans-serif;
+  font-size:10.5px;letter-spacing:.24em;color:var(--gold);
+  display:block;margin-bottom:9px;font-weight:600;
+}
+h3{
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--navy);font-weight:700;margin:30px 0 12px;
+}
+p{margin-bottom:14px;color:var(--ink)}
+.lede{font-size:16.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:26px;max-width:74ch}
+.note{font-size:13px;color:var(--ink-soft);font-style:italic}
+
+/* ---------- headline price ---------- */
+.verdict{
+  background:var(--navy);color:#fff;border-radius:3px;
+  padding:34px 40px;margin:8px 0 30px;
+  display:flex;flex-wrap:wrap;align-items:flex-end;gap:44px;
+}
+.verdict .big{
+  font-family:Georgia,serif;font-size:52px;line-height:1;letter-spacing:-.02em;
+}
+.verdict .big small{display:block;font-family:inherit;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600;
+  font-family:"Helvetica Neue",sans-serif;}
+.verdict .stat{border-left:1px solid rgba(255,255,255,.22);padding-left:26px}
+.verdict .stat b{display:block;font-family:Georgia,serif;font-size:27px;line-height:1.1}
+.verdict .stat span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9fb0c2}
+
+/* ---------- key numbers row ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);border-radius:3px;margin:22px 0 8px}
+.kpi{padding:20px 22px;border-right:1px solid var(--rule)}
+.kpi:last-child{border-right:none}
+.kpi b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--navy);line-height:1.15}
+.kpi span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:5px}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0 10px;font-variant-numeric:tabular-nums}
+thead th{
+  background:var(--navy);color:#fff;font-weight:600;text-align:left;
+  padding:10px 11px;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  vertical-align:bottom;
+}
+tbody td{padding:11px;border-bottom:1px solid var(--rule);vertical-align:top}
+tbody tr:nth-child(even){background:#fbfaf8}
+tbody tr.subject-row{background:var(--gold-pale)}
+tbody tr.subject-row td{font-weight:600;color:var(--navy);border-bottom:2px solid var(--gold)}
+td.num,th.num{text-align:right}
+tfoot td{padding:11px;font-weight:700;color:var(--navy);border-top:2px solid var(--navy);background:#fff}
+.addr{font-weight:600;color:var(--navy)}
+.addr small{display:block;font-weight:400;color:var(--ink-soft);font-size:11.5px;letter-spacing:.02em}
+
+.tag{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 8px;border-radius:2px;font-weight:700;white-space:nowrap}
+.t-fast{background:#e4f0e9;color:var(--green)}
+.t-slow{background:#f7ecd8;color:var(--amber)}
+.t-dead{background:#f7e5e4;color:var(--red)}
+.t-cash{background:#eceff3;color:var(--navy-soft)}
+
+/* ---------- DOM signature chart ---------- */
+.dom-chart{border:1px solid var(--rule);border-radius:3px;padding:28px 30px 22px;margin:20px 0 26px;background:#fdfcfa}
+.dom-band{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  padding-bottom:8px;margin-bottom:14px;border-bottom:1px solid var(--rule)}
+.band-a{color:var(--green)}
+.band-b{color:var(--red)}
+.dom-row{display:grid;grid-template-columns:190px 1fr 96px;align-items:center;gap:14px;margin-bottom:9px}
+.dom-label{font-size:12.5px;color:var(--navy);font-weight:600;line-height:1.3}
+.dom-label em{display:block;font-style:normal;font-weight:400;font-size:11px;color:var(--ink-soft)}
+.dom-track{background:#efece6;height:19px;border-radius:2px;overflow:hidden}
+.dom-fill{height:100%;border-radius:2px}
+.f-good{background:var(--green)}
+.f-bad{background:#c9a25f}
+.f-dead{background:var(--red)}
+.dom-val{font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+.dom-val b{color:var(--navy);font-size:14px}
+.dom-split{margin:22px 0 6px;padding-top:16px;border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.dom-split div b{display:block;font-family:Georgia,serif;font-size:30px;color:var(--navy);line-height:1.1}
+.dom-split div span{font-size:12px;color:var(--ink-soft);display:block;margin-top:4px}
+
+/* ---------- pricing tiers ---------- */
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 10px}
+.tier{border:1px solid var(--rule);border-radius:3px;padding:20px 18px;background:#fff}
+.tier.rec{border:2px solid var(--gold);background:#fffdf8;position:relative}
+.tier.rec:before{content:"Recommended";position:absolute;top:-9px;left:16px;background:var(--gold);
+  color:#fff;font-size:9px;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;border-radius:2px;font-weight:700}
+.tier .price{font-family:Georgia,serif;font-size:27px;color:var(--navy);line-height:1.1}
+.tier .psf{font-size:11.5px;color:var(--ink-soft);margin:3px 0 12px}
+.tier .dom{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:7px}
+.tier p{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0}
+
+/* ---------- callouts ---------- */
+.callout{border-left:3px solid var(--gold);background:#fdfaf3;padding:20px 24px;margin:22px 0;border-radius:0 3px 3px 0}
+.callout h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:700}
+.callout p:last-child{margin-bottom:0}
+.callout.green{border-left-color:var(--green);background:#f6faf7}
+.callout.green h4{color:var(--green)}
+.callout.navy{border-left-color:var(--navy);background:#f7f8fa}
+.callout.navy h4{color:var(--navy)}
+
+/* ---------- timeline ---------- */
+.timeline{margin:22px 0 10px;border-left:2px solid var(--gold-pale);padding-left:0}
+.tl-item{display:grid;grid-template-columns:118px 1fr;gap:20px;padding:0 0 22px 24px;position:relative;border-left:2px solid var(--gold-pale);margin-left:6px}
+.tl-item:last-child{border-left-color:transparent;padding-bottom:4px}
+.tl-item:before{content:"";position:absolute;left:-6px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff}
+.tl-when{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);font-weight:700;padding-top:1px}
+.tl-body b{display:block;color:var(--navy);font-size:14px;margin-bottom:3px}
+.tl-body span{font-size:13px;color:var(--ink-soft)}
+
+/* ---------- lists ---------- */
+ul.clean{list-style:none;margin:10px 0 16px}
+ul.clean li{padding:9px 0 9px 26px;border-bottom:1px solid var(--rule);position:relative;font-size:14px}
+ul.clean li:before{content:"";position:absolute;left:6px;top:17px;width:5px;height:5px;background:var(--gold);border-radius:50%}
+ul.clean li b{color:var(--navy)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--navy);color:#9fb0c2;padding:34px 56px 40px;margin-top:44px}
+.footer .sig{font-family:Georgia,serif;font-size:20px;color:#fff;margin-bottom:4px}
+.footer .co{color:var(--gold);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+.footer p{font-size:11.5px;line-height:1.6;color:#8a9cb0;margin-bottom:8px;max-width:88ch}
+
+
+/* ---------- then vs now ---------- */
+.shift{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);border-radius:3px;margin:22px 0 10px;overflow:hidden}
+.shift-col{padding:22px 24px}
+.shift-col:first-child{border-right:1px solid var(--rule);background:#fbfaf8}
+.shift-head{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid var(--rule)}
+.shift-col:first-child .shift-head{color:var(--ink-soft)}
+.shift-col:last-child .shift-head{color:var(--navy)}
+.shift-row{margin-bottom:13px}
+.shift-row b{display:block;font-family:Georgia,serif;font-size:21px;color:var(--navy);line-height:1.2}
+.shift-col:first-child .shift-row b{color:var(--ink-soft)}
+.shift-row span{font-size:11.5px;color:var(--ink-soft);display:block;margin-top:2px}
+.delta{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;padding:1px 7px;border-radius:2px;margin-left:7px;vertical-align:middle}
+.d-up{background:#e4f0e9;color:var(--green)}
+.d-down{background:#f7e5e4;color:var(--red)}
+.d-flat{background:#eceff3;color:var(--navy-soft)}
+@media (max-width:820px){.shift{grid-template-columns:1fr}.shift-col:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+
+@media print{
+  body{background:#fff;font-size:11.5px}
+  .page{max-width:none}
+  .pad{padding:0 34px}
+  .masthead{padding:28px 34px 24px}
+  .footer{padding:24px 34px}
+  section{padding:26px 0 4px;page-break-inside:avoid}
+  .dom-chart,.verdict,table,.tiers,.timeline,.callout{page-break-inside:avoid}
+  thead{display:table-header-group}
+  .masthead h1{font-size:27px}
+  .verdict .big{font-size:40px}
+  h2{font-size:19px}
+  @page{margin:12mm}
+}
+@media (max-width:820px){
+  .pad{padding:0 22px}
+  .masthead{padding:32px 22px 28px}
+  .footer{padding:28px 22px}
+  .kpis,.tiers{grid-template-columns:1fr 1fr}
+  .verdict{gap:24px;padding:26px}
+  .verdict .stat{border-left:none;padding-left:0}
+  .dom-row{grid-template-columns:1fr;gap:5px}
+  .dom-val{text-align:left}
+  .dom-split{grid-template-columns:1fr;gap:18px}
+  .tl-item{grid-template-columns:1fr;gap:4px}
+  table{font-size:12px}
+  tbody td,thead th{padding:8px 7px}
+  .table-scroll{overflow-x:auto}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ============ MASTHEAD ============ -->
+<div class="masthead">
+  <div class="eyebrow">Comparative Market Analysis</div>
+  <h1>15006 Montesino Drive<br>Orlando, Florida 32828</h1>
+  <div class="sub">Bella Vida at Avalon Park &nbsp;&middot;&nbsp; 4 Bedrooms &nbsp;&middot;&nbsp; 2 Baths &nbsp;&middot;&nbsp; 1,956 Sq Ft &nbsp;&middot;&nbsp; Built 2007</div>
+  <div class="rule-gold"></div>
+  <div class="byline">
+    <div>Prepared by<b>Rebeca Lima, Realtor&reg;</b></div>
+    <div>Brokerage<b>Verandah Properties LLC</b></div>
+    <div>Report date<b>November 12, 2026</b></div>
+    <div>Comparable window<b>May 16 to November 12, 2026</b></div>
+  </div>
+</div>
+
+<!-- ============ 1. RECOMMENDATION ============ -->
+<section class="pad">
+  <h2><span class="num">01 / The Recommendation</span>Where your home should be priced</h2>
+  <p class="lede">This analysis reviews every home that has sold in Bella Vida over the past 180 days, the current competition, and the improvements you are making before listing. Two recent sales are close enough to your home in size and layout to carry real weight. Together they indicate a value of $440,016, and the recommendation below is set within a few hundred dollars of that figure.</p>
+
+  <div class="verdict">
+    <div class="big"><small>Recommended list price</small>$439,900</div>
+    <div class="stat"><b>$225</b><span>Per square foot</span></div>
+    <div class="stat"><b>25 to 45 days</b><span>Expected to contract</span></div>
+    <div class="stat"><b>$425K to $437K</b><span>Expected sale price</span></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><b>$440,016</b><span>Indicated value</span></div>
+    <div class="kpi"><b>98.2%</b><span>Average sale to list price</span></div>
+    <div class="kpi"><b>$16,500</b><span>Value added by improvements</span></div>
+    <div class="kpi"><b>2</b><span>Competing homes on the market</span></div>
+  </div>
+  <p class="note">Priced here, your home would be the most competitively positioned listing in Bella Vida and the only updated, move-in ready home available below $500,000.</p>
+</section>
+
+<!-- ============ 2. THE PROPERTY ============ -->
+<section class="pad">
+  <h2><span class="num">02 / Your Property</span>What we are bringing to market</h2>
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Feature</th><th>15006 Montesino Dr</th><th>Position in Bella Vida</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Living area</td><td>1,956 sq ft</td><td>The most affordable entry point in the community</td></tr>
+      <tr><td>Bedrooms / baths</td><td>4 / 2</td><td>Matches the most in-demand layout here</td></tr>
+      <tr><td>Year built</td><td>2007</td><td>Established section of the neighborhood</td></tr>
+      <tr class="subject-row"><td>Flooring</td><td>New LVP throughout, tile in kitchen and baths</td><td>No carpet anywhere, which buyers increasingly expect</td></tr>
+      <tr class="subject-row"><td>Interior</td><td>Freshly repainted</td><td>Presents as move-in ready</td></tr>
+      <tr class="subject-row"><td>Exterior</td><td>Pressure washed, front door repainted</td><td>Strengthens the first photo buyers see</td></tr>
+      <tr class="subject-row"><td>Roof</td><td>2021, approximately 5 years old</td><td>A meaningful advantage over other 2006 to 2007 homes</td></tr>
+      <tr class="subject-row"><td>Air conditioner</td><td>2021, approximately 5 years old</td><td>Roughly one third through its expected service life</td></tr>
+      <tr><td>Occupancy</td><td>Vacant at listing</td><td>Shows on demand with a lockbox, no appointment delays</td></tr>
+      <tr><td>Community</td><td>Bella Vida, gated</td><td>Park, playground, tennis and basketball courts, dog park</td></tr>
+      <tr><td>HOA</td><td>Approximately $1,580 per year</td><td>Consistent across the community</td></tr>
+      <tr><td>Schools</td><td>Timber Lakes Elementary, Timber Springs Middle, Timber Creek High</td><td>A primary driver of demand in this subdivision</td></tr>
+      <tr><td>Flood zone</td><td>Zone X</td><td>No lender required flood insurance</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout green">
+    <h4>Your two strongest selling points</h4>
+    <p><b>The roof and air conditioner.</b> Buyers shopping homes built in 2006 and 2007 are actively screening for roof age, and so are their insurance carriers. A five year old roof carries 15 to 20 years of remaining service life and clears underwriting without the questions an original roof invites. Nothing else in this price range offers that right now.</p>
+    <p><b>Condition and availability.</b> With new flooring, fresh paint, and the house empty, your home shows as finished and move-in ready. Both homes that sold quickly in this analysis were easy to show and ready to occupy. That combination is what produces offers in the first weeks rather than the second month.</p>
+  </div>
+</section>
+
+<!-- ============ 3. RECENT SALES ============ -->
+<section class="pad">
+  <h2><span class="num">03 / Recent Sales</span>What buyers have paid in Bella Vida</h2>
+  <p>Four homes have sold in the community within the last 180 days. Two are close enough to yours in size and configuration to guide pricing directly. The other two are much larger homes that serve mainly to show the direction of the market.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Address</th><th class="num">Beds / baths</th><th class="num">Sq ft</th><th class="num">Built</th>
+        <th class="num">List</th><th class="num">Sold</th><th class="num">$ / sq ft</th><th class="num">SP / LP</th>
+        <th class="num">Days to contract</th><th>Terms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="subject-row">
+        <td class="addr">15336 Treviso St<small>Sold 10/30/2026</small></td>
+        <td class="num">4 / 2</td><td class="num">2,112</td><td class="num">2011</td>
+        <td class="num">$485,000</td><td class="num">$465,000</td><td class="num">$220.17</td>
+        <td class="num">95.9%</td><td class="num">46</td><td><span class="tag t-fast">Conventional</span></td>
+      </tr>
+      <tr class="subject-row">
+        <td class="addr">613 Cortona Dr<small>Sold 05/28/2026</small></td>
+        <td class="num">4 / 2.5</td><td class="num">2,488</td><td class="num">2011</td>
+        <td class="num">$515,000</td><td class="num">$520,000</td><td class="num">$209.00</td>
+        <td class="num">101.0%</td><td class="num">5</td><td><span class="tag t-fast">VA</span></td>
+      </tr>
+      <tr>
+        <td class="addr">529 Cortona Dr<small>Sold 08/31/2026</small></td>
+        <td class="num">6 / 4</td><td class="num">3,474</td><td class="num">2006</td>
+        <td class="num">$594,900</td><td class="num">$585,000</td><td class="num">$168.39</td>
+        <td class="num">98.3%</td><td class="num">69</td><td><span class="tag t-slow">Reduced</span></td>
+      </tr>
+      <tr>
+        <td class="addr">15612 Montesino Dr<small>Sold 09/09/2026</small></td>
+        <td class="num">5 / 4</td><td class="num">3,498</td><td class="num">2006</td>
+        <td class="num">$575,000</td><td class="num">$560,000</td><td class="num">$160.09</td>
+        <td class="num">97.4%</td><td class="num">249</td><td><span class="tag t-slow">Reduced</span></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Average</td><td class="num">5 / 3</td><td class="num">2,893</td><td class="num">2009</td>
+        <td class="num">$542,475</td><td class="num">$532,500</td><td class="num">$189.41</td>
+        <td class="num">98.2%</td><td class="num">92</td><td></td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <div class="callout navy">
+    <h4>The two sales that guide your price</h4>
+    <p><b>15336 Treviso St</b> closed two weeks ago at $220.17 per square foot. It is a 4 bedroom, 2 bath home, it sold vacant with a lockbox, and it closed conventionally with no seller concessions. It is the most recent and most directly comparable sale available.</p>
+    <p><b>613 Cortona Dr</b> closed at $209.00 per square foot in five days at 101 percent of its asking price. It is a larger two story home with a water view, a 2026 roof, and a fenced backyard with pavers, a hot tub and a fire pit, so it requires significant adjustment. It is valuable evidence that a well presented home priced correctly on day one still sells immediately in this community.</p>
+  </div>
+
+  <h3>Adjustment analysis</h3>
+  <p>Each sale is adjusted to match your home at 1,956 square feet, 4 bedrooms, 2 baths, built 2007, with new LVP flooring, fresh paint, and a 2021 roof and air conditioner. Living area is adjusted at $110 per square foot, the standard rate for this price range.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Adjustment</th>
+        <th class="num">15336 Treviso</th><th class="num">613 Cortona</th>
+        <th class="num">529 Cortona</th><th class="num">15612 Montesino</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Sale price</td><td class="num">$465,000</td><td class="num">$520,000</td><td class="num">$585,000</td><td class="num">$560,000</td></tr>
+      <tr><td>Living area</td><td class="num">-$17,160</td><td class="num">-$58,520</td><td class="num">-$166,980</td><td class="num">-$169,620</td></tr>
+      <tr><td>Bedroom count</td><td class="num">0</td><td class="num">0</td><td class="num">-$10,000</td><td class="num">-$5,000</td></tr>
+      <tr><td>Bathroom count</td><td class="num">0</td><td class="num">-$5,000</td><td class="num">-$15,000</td><td class="num">-$15,000</td></tr>
+      <tr><td>Age of construction</td><td class="num">-$4,000</td><td class="num">-$4,000</td><td class="num">+$1,000</td><td class="num">+$1,000</td></tr>
+      <tr><td>Lot size</td><td class="num">-$1,500</td><td class="num">-$2,700</td><td class="num">-$1,500</td><td class="num">-$2,400</td></tr>
+      <tr><td>Flooring</td><td class="num">+$1,500</td><td class="num">+$5,000</td><td class="num">+$3,000</td><td class="num">+$3,000</td></tr>
+      <tr><td>Interior paint</td><td class="num">+$2,000</td><td class="num">+$2,000</td><td class="num">included</td><td class="num">included</td></tr>
+      <tr><td>Kitchen finishes</td><td class="num">-$6,000</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Roof and air conditioner</td><td class="num">+$5,000</td><td class="num">-$6,000</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Outdoor improvements</td><td class="num">0</td><td class="num">-$18,000</td><td class="num">0</td><td class="num">0</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Adjusted value indication</td>
+        <td class="num">$444,840</td><td class="num">$432,780</td><td class="num">$395,520</td><td class="num">$371,980</td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <h3>How much each sale counts</h3>
+  <p>Gross adjustment measures how far a sale has to be adjusted to resemble your home, expressed as a share of its sale price. The smaller the figure, the more reliable the comparison. Appraisers generally disregard any sale requiring more than 25 percent.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Sale</th><th class="num">Adjusted value</th><th class="num">Gross adjustment</th><th class="num">Weight applied</th><th>Reasoning</th></tr>
+    </thead>
+    <tbody>
+      <tr class="subject-row">
+        <td class="addr">15336 Treviso St</td><td class="num">$444,840</td><td class="num">8.0%</td><td class="num">60%</td>
+        <td>Same bed and bath count, closest in size, most recent sale</td>
+      </tr>
+      <tr class="subject-row">
+        <td class="addr">613 Cortona Dr</td><td class="num">$432,780</td><td class="num">19.5%</td><td class="num">40%</td>
+        <td>Same bedroom count, adjustment within acceptable range</td>
+      </tr>
+      <tr>
+        <td class="addr">529 Cortona Dr</td><td class="num">$395,520</td><td class="num">33.8%</td><td class="num">0%</td>
+        <td>Too large to compare reliably</td>
+      </tr>
+      <tr>
+        <td class="addr">15612 Montesino Dr</td><td class="num">$371,980</td><td class="num">35.0%</td><td class="num">0%</td>
+        <td>Too large to compare reliably</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Indicated value for your home</td><td class="num">$440,016</td><td class="num"></td><td class="num">100%</td><td></td></tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <div class="callout green">
+    <h4>Two sales, five months apart, pointing to the same number</h4>
+    <p>15336 Treviso indicates $444,840 and 613 Cortona indicates $432,780. Weighted according to how closely each resembles your home, they produce $440,016. Two independent sales arriving within $12,000 of one another, five months apart, is strong confirmation that the recommended price reflects what this market will actually pay.</p>
+    <p>The two larger homes are shown for completeness. Comparing a 3,500 square foot, four bath home to a 1,956 square foot, two bath home requires adjusting away roughly a third of the sale price, which is too much to produce a credible figure. They remain useful for one observation: both sold within 2 to 3 percent of their asking price once that price was set correctly.</p>
+  </div>
+
+  <div class="callout">
+    <h4>Appraisal outlook</h4>
+    <p>At $439,900 a conventional appraisal is well supported. An appraiser will reach for the same two sales and follow essentially the same arithmetic shown above. Having the 2021 roof and air conditioner documentation attached to the listing from day one removes any question before it is asked.</p>
+  </div>
+</section>
+
+<!-- ============ 4. MARKET CONTEXT ============ -->
+<section class="pad">
+  <h2><span class="num">04 / Market Context</span>Where values have been running</h2>
+  <p>Three additional homes sold in Bella Vida earlier in the year. They fall outside the 180 day window used for pricing, but they are worth seeing because together with the recent sales they show a remarkably steady market.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Address</th><th class="num">Closed</th><th class="num">Beds / baths</th><th class="num">Sq ft</th><th class="num">Sold</th><th class="num">$ / sq ft</th><th class="num">SP / LP</th><th class="num">Days</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="addr">15336 Treviso St<small>Prior sale of the same home</small></td><td class="num">04/24/2026</td><td class="num">4 / 2</td><td class="num">2,112</td><td class="num">$460,000</td><td class="num">$217.80</td><td class="num">94.1%</td><td class="num">148</td></tr>
+      <tr><td class="addr">924 Bella Vida Blvd<small>Fully renovated 3 bedroom</small></td><td class="num">04/20/2026</td><td class="num">3 / 2</td><td class="num">2,112</td><td class="num">$507,000</td><td class="num">$240.06</td><td class="num">99.4%</td><td class="num">4</td></tr>
+      <tr><td class="addr">15300 Montesino Dr</td><td class="num">03/02/2026</td><td class="num">4 / 2</td><td class="num">2,092</td><td class="num">$445,000</td><td class="num">$212.72</td><td class="num">93.7%</td><td class="num">10</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Twelve months of 4 bedroom, 2 bath sales</h3>
+  <p>Taken in order, the price per square foot achieved by homes matching your layout has been: <b>$212.72 in March, $217.80 in April, $209.00 in May, and $220.17 in October.</b> Values have held in a narrow band between $209 and $220 all year, with no decline and no surge. Your recommended price of $224.90 per square foot sits just above that band, which your smaller square footage, newer systems and updated flooring support.</p>
+
+  <div class="callout">
+    <h4>What it takes to reach the top of the market</h4>
+    <p>The highest figure Bella Vida has produced is $240.06 per square foot, at 924 Bella Vida Blvd, which sold in four days. That home had been fully renovated, with quartz countertops, a large island, custom wood feature walls, and an outdoor kitchen under a pergola. It is a useful benchmark because it shows the ceiling exists, and it shows what reaching it requires: a full kitchen renovation rather than flooring and paint. For this listing, the improvements you have chosen are the ones that return the most for what they cost.</p>
+  </div>
+</section>
+
+<!-- ============ 5. COMPETITION ============ -->
+<section class="pad">
+  <h2><span class="num">05 / Current Competition</span>What a buyer sees today</h2>
+  <p class="lede">There are only two homes actively for sale in Bella Vida right now, and only one of them competes with yours. Understanding that listing shapes how we price and how we present.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Address</th><th class="num">Beds / baths</th><th class="num">Sq ft</th><th class="num">List price</th><th class="num">$ / sq ft</th><th class="num">Days on market</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr class="subject-row">
+        <td class="addr">15006 Montesino Dr<small>Your home, proposed</small></td>
+        <td class="num">4 / 2</td><td class="num">1,956</td><td class="num">$439,900</td><td class="num">$224.90</td><td class="num">0</td>
+        <td>Updated, vacant, newer roof and air conditioner</td>
+      </tr>
+      <tr>
+        <td class="addr">15319 Montesino Dr<small>Listed 10/05/2026</small></td>
+        <td class="num">4 / 2</td><td class="num">2,013</td><td class="num">$415,000</td><td class="num">$206.16</td><td class="num">38</td>
+        <td>Tenant occupied, original carpet, no contract to date</td>
+      </tr>
+      <tr>
+        <td class="addr">815 Bella Vida Blvd<small>Listed 09/17/2026</small></td>
+        <td class="num">5 / 4</td><td class="num">3,846</td><td class="num">$699,900</td><td class="num">$181.98</td><td class="num">56</td>
+        <td>Different price range, not direct competition</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>How your home compares to 15319 Montesino</h3>
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Feature</th><th>15319 Montesino Dr</th><th>Your home</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>List price</td><td>$415,000</td><td class="addr">$439,900</td></tr>
+      <tr><td>Living area</td><td>2,013 sq ft</td><td>1,956 sq ft</td></tr>
+      <tr><td>Year built</td><td>2007</td><td>2007</td></tr>
+      <tr class="subject-row"><td>Flooring</td><td>Original carpet and tile</td><td>New LVP throughout</td></tr>
+      <tr class="subject-row"><td>Interior paint</td><td>Not updated</td><td>Freshly repainted</td></tr>
+      <tr class="subject-row"><td>Roof</td><td>Age not disclosed</td><td>2021</td></tr>
+      <tr class="subject-row"><td>Air conditioner</td><td>Age not disclosed</td><td>2021</td></tr>
+      <tr class="subject-row"><td>Showing access</td><td>Tenant in place, 24 hour notice required</td><td>Vacant, lockbox, shows anytime</td></tr>
+      <tr><td>Marketing</td><td>Some photos virtually staged</td><td>Professional photography of a finished home</td></tr>
+      <tr><td>Result so far</td><td>38 days, no contract</td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout green">
+    <h4>Why the price difference is justified</h4>
+    <p>That listing is marketed to investors, describing the home as income-producing with tenants in place and ready for the buyer's personal touches. Investors buy at a discount, and the showing requirements of 24 hour notice through an out of area agent mean most weekend buyers never get inside. After 38 days it has not found a contract.</p>
+    <p>Your home reaches a different buyer entirely. It is finished, vacant, available immediately, and carries a roof and air conditioner that a 2007 home with original systems cannot match. The $24,900 difference between the two prices reflects real, documented differences in condition and systems, not optimism.</p>
+  </div>
+
+  <div class="callout">
+    <h4>One thing this means for our marketing</h4>
+    <p>Because both homes will appear side by side in search results, the listing photos and the opening lines of the description have to communicate the difference immediately. The new flooring, the fresh paint, and the 2021 roof and air conditioner will lead the presentation, so that a buyer comparing the two online understands what the higher price buys before they ever schedule a showing.</p>
+  </div>
+</section>
+
+<!-- ============ 6. DAYS ON MARKET ============ -->
+<section class="pad">
+  <h2><span class="num">06 / Days on Market</span>How quickly your home should sell</h2>
+  <p class="lede">Bella Vida rewards accurate pricing more than almost any factor. Homes priced correctly on the first day have gone under contract in five to 46 days. Homes priced above the market have taken months and finished below where they started.</p>
+
+  <div class="dom-chart">
+    <div class="dom-band band-a">Sold or under contract</div>
+
+    <div class="dom-row">
+      <div class="dom-label">613 Cortona Dr<em>Sold at 101% of asking price</em></div>
+      <div class="dom-track"><div class="dom-fill f-good" style="width:2%"></div></div>
+      <div class="dom-val"><b>5</b> days</div>
+    </div>
+    <div class="dom-row">
+      <div class="dom-label">343 Cortona Dr<em>Under contract, priced correctly on day one</em></div>
+      <div class="dom-track"><div class="dom-fill f-good" style="width:6%"></div></div>
+      <div class="dom-val"><b>15</b> days</div>
+    </div>
+    <div class="dom-row">
+      <div class="dom-label">15336 Treviso St<em>Sold $465,000, vacant and easy to show</em></div>
+      <div class="dom-track"><div class="dom-fill f-good" style="width:18%"></div></div>
+      <div class="dom-val"><b>46</b> days</div>
+    </div>
+    <div class="dom-row">
+      <div class="dom-label">648 Cortona Dr<em>Under contract after reducing $685,000 to $665,000</em></div>
+      <div class="dom-track"><div class="dom-fill f-bad" style="width:25%"></div></div>
+      <div class="dom-val"><b>62</b> days</div>
+    </div>
+    <div class="dom-row">
+      <div class="dom-label">529 Cortona Dr<em>Sold $585,000 after reducing from $599,900</em></div>
+      <div class="dom-track"><div class="dom-fill f-bad" style="width:28%"></div></div>
+      <div class="dom-val"><b>69</b> days</div>
+    </div>
+
+    <div class="dom-band band-b" style="margin-top:26px">Priced above the market</div>
+
+    <div class="dom-row">
+      <div class="dom-label">15319 Montesino Dr<em>Active at $415,000, no contract to date</em></div>
+      <div class="dom-track"><div class="dom-fill f-bad" style="width:15%"></div></div>
+      <div class="dom-val"><b>38</b> days</div>
+    </div>
+    <div class="dom-row">
+      <div class="dom-label">1034 Bella Vida Blvd<em>$598,000 reduced to $529,000, withdrawn unsold</em></div>
+      <div class="dom-track"><div class="dom-fill f-dead" style="width:60%"></div></div>
+      <div class="dom-val"><b>149</b> days</div>
+    </div>
+    <div class="dom-row">
+      <div class="dom-label">15612 Montesino Dr<em>Sold eventually, after nine months and $15,000 off</em></div>
+      <div class="dom-track"><div class="dom-fill f-dead" style="width:100%"></div></div>
+      <div class="dom-val"><b>249</b> days</div>
+    </div>
+
+    <div class="dom-split">
+      <div><b>25.5 days</b><span>Average to contract for the two comparable 4 bedroom sales</span></div>
+      <div><b>25 to 45 days</b><span>Realistic expectation for your home at $439,900</span></div>
+    </div>
+  </div>
+
+  <div class="callout navy">
+    <h4>What to expect</h4>
+    <p>Priced at $439,900 and listed before the end of November, your home should go under contract in <b>25 to 45 days</b> and close <b>35 to 40 days after that</b>. From listing to the closing table is realistically <b>60 to 85 days</b>, which places a late November launch at a late January or early February closing.</p>
+    <p>A home listed at $429,900 would likely contract in 12 to 25 days. A home listed at $449,900 would likely take more than 60 days and require a reduction.</p>
+  </div>
+
+  <div class="callout">
+    <h4>What slow starts have cost other sellers here</h4>
+    <p>15612 Montesino launched at $605,000, spent nine months on the market, and closed at $560,000. 1034 Bella Vida launched at $598,000, reduced in stages to $529,000, and was eventually withdrawn without selling. In both cases the market was not the problem. The opening price was, and the cost of correcting it was far greater than the amount the sellers were originally reaching for.</p>
+  </div>
+</section>
+
+<!-- ============ 7. IMPROVEMENTS ============ -->
+<section class="pad">
+  <h2><span class="num">07 / Your Improvements</span>What the work is worth</h2>
+  <p>The improvements underway are the right ones for this price range. Here is what they cost and what they return.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Improvement</th><th class="num">Estimated cost</th><th class="num">Value added</th><th>Why it pays</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="addr">LVP flooring<small>Approximately 800 sq ft, tile remains in kitchen and baths</small></td>
+        <td class="num">$5,400</td><td class="num">$8,000 to $10,000</td>
+        <td>Removes the element buyers most associate with a dated home</td>
+      </tr>
+      <tr>
+        <td class="addr">Interior repaint<small>Whole house</small></td>
+        <td class="num">$3,800</td><td class="num">$4,000 to $6,000</td>
+        <td>Presents the home as finished rather than recently vacated</td>
+      </tr>
+      <tr>
+        <td class="addr">Pressure wash and front door<small>Exterior, driveway, walkway</small></td>
+        <td class="num">$600</td><td class="num">$2,000 to $3,000</td>
+        <td>Strengthens the exterior photo, the first image every buyer sees</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total</td><td class="num">$9,800</td><td class="num">$14,000 to $19,000</td><td></td></tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><b>$9,800</b><span>Total investment</span></div>
+    <div class="kpi"><b>$16,500</b><span>Midpoint value added</span></div>
+    <div class="kpi"><b>+$6,700</b><span>Net gain</span></div>
+    <div class="kpi"><b>168%</b><span>Return on every dollar spent</span></div>
+  </div>
+
+  <div class="callout green">
+    <h4>The clearest evidence that this work matters</h4>
+    <p>15319 Montesino Drive is the same vintage, the same bedroom count, and on the same street, with none of these improvements and a tenant still in place. It has been on the market 38 days at $415,000 without a contract. The improvements are what allow your home to reach a buyer who is looking for a finished house rather than a project, and to hold close to the asking price rather than negotiating from a weaker position.</p>
+  </div>
+
+  <div class="callout">
+    <h4>Two requests before we photograph</h4>
+    <p><b>Complete every room before photography.</b> A single room left with carpet in the photo set undercuts the whole presentation, and buyers notice the inconsistency immediately.</p>
+    <p><b>Locate the 2021 roof and air conditioner paperwork.</b> Permits or contractor invoices will be attached to the listing. Against competing homes with undisclosed system ages, documented dates are persuasive to buyers, to their insurance carriers, and to the appraiser.</p>
+  </div>
+</section>
+
+<!-- ============ 8. PRICING SCENARIOS ============ -->
+<section class="pad">
+  <h2><span class="num">08 / Pricing Options</span>What each price would produce</h2>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="price">$429,900</div>
+      <div class="psf">$219.79 per sq ft</div>
+      <div class="dom">12 to 25 days</div>
+      <p>Creates immediate urgency and the strongest appraisal position. The right choice if closing before February matters more than the final few thousand dollars.</p>
+    </div>
+    <div class="tier rec">
+      <div class="price">$439,900</div>
+      <div class="psf">$224.90 per sq ft</div>
+      <div class="dom">25 to 45 days</div>
+      <p>Set within a few hundred dollars of the indicated value, with room to negotiate toward $430,000. Keeps your home the most attractive updated listing in the community.</p>
+    </div>
+    <div class="tier">
+      <div class="price">$444,900</div>
+      <div class="psf">$227.45 per sq ft</div>
+      <div class="dom">45 to 70 days</div>
+      <p>Supportable by the most recent sale alone, but leaves less room to respond if the competing listing reduces its price. Requires patience through the holiday season.</p>
+    </div>
+    <div class="tier">
+      <div class="price">$449,900</div>
+      <div class="psf">$230.01 per sq ft</div>
+      <div class="dom">60+ days</div>
+      <p>Above anything a comparable home in Bella Vida has achieved this year. A reduction would most likely be necessary, and reduced listings here sell for less than well priced ones.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Our plan if showings are slow</h4>
+    <p>If the first two weeks do not produce consistent showing activity, the right response is a single decisive adjustment to $429,900 rather than a series of small reductions. Listings in this community that reduced gradually have either sold for less than a single correction would have achieved or failed to sell at all. Agreeing on this in advance means the decision is made calmly rather than under pressure.</p>
+  </div>
+</section>
+
+<!-- ============ 9. TIMING ============ -->
+<section class="pad">
+  <h2><span class="num">09 / Timing</span>Listing now compared to January</h2>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Consideration</th><th>Late November or early December</th><th>First week of January</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Competing listings</td><td class="addr">Only one competing home in Bella Vida</td><td>January typically brings three to five new listings</td></tr>
+      <tr><td>Buyer traffic</td><td>Lighter, though December buyers tend to be committed</td><td class="addr">Strongest traffic of the year</td></tr>
+      <tr><td>Competitive position</td><td class="addr">Your updated home stands out clearly</td><td>The competing listing may have sold or reduced</td></tr>
+      <tr><td>Carrying cost</td><td class="addr">No additional months</td><td>Roughly $900 per month while vacant</td></tr>
+      <tr><td>Expected contract</td><td>Late December to mid January</td><td>Mid to late January</td></tr>
+      <tr><td>Expected days on market</td><td>25 to 45</td><td>14 to 28</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout green">
+    <h4>My recommendation</h4>
+    <p>List as soon as the flooring, paint and exterior work are complete and the home has been photographed, targeting the first week of December at the latest. With only one competing home in Bella Vida and that home dated and difficult to show, your listing enters the market in an unusually strong position. That advantage narrows once January inventory arrives.</p>
+    <p>If the work runs past December 10, we should hold until the first week of January rather than launch during the final two weeks of the year, when showing activity in this area effectively stops.</p>
+  </div>
+</section>
+
+<!-- ============ 10. NEXT STEPS ============ -->
+<section class="pad">
+  <h2><span class="num">10 / Next Steps</span>Getting to market</h2>
+  <ul class="clean">
+    <li><b>Complete the flooring, paint and exterior work.</b> Photography follows once every room is finished and the home is empty and clean.</li>
+    <li><b>Locate the 2021 roof and air conditioner documentation.</b> Permits or invoices will be attached to the listing from day one.</li>
+    <li><b>Confirm square footage and lot size</b> against public records so the listing figures are accurate.</li>
+    <li><b>Professional photography with a floor plan.</b> Leading with the exterior, the open living area, and the new flooring.</li>
+    <li><b>Lockbox and ShowingTime access</b> with no appointment restrictions, so every buyer who wants to see the home can.</li>
+    <li><b>Listing description built around condition.</b> The new flooring, fresh paint, 2021 roof and air conditioner, and immediate availability lead the copy.</li>
+    <li><b>Confirm the list price</b> and set the launch date.</li>
+  </ul>
+  <p>Once you have reviewed this analysis, I am happy to walk through any section of it by phone and answer whatever questions come up before we finalize the price.</p>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="footer">
+  <div class="sig">Rebeca Lima</div>
+  <div class="co">Realtor&reg; &nbsp;&middot;&nbsp; Verandah Properties LLC</div>
+  <p>This is an opinion of value or Comparative Market Analysis and should not be considered an appraisal. In making any decision that relies upon my work, you should know that I have not followed the guidelines for development of an appraisal or analysis contained in the Uniform Standards of Professional Appraisal Practice of the Appraisal Foundation.</p>
+  <p>Analysis dated November 12, 2026. The comparable window covers 180 days, from May 16 to November 12, 2026. Data sourced from Stellar MLS and deemed reliable but not guaranteed. Sales shown in Section 04 fall outside the 180 day window and are presented for market context only. Improvement cost estimates reflect Central Florida installed pricing as of November 2026 and are not a substitute for a contractor bid. Roof and air conditioner ages for competing properties are not disclosed in the MLS. Adjustments reflect market derived estimates for this submarket. Square footage, lot dimensions and improvement dates should be independently verified.</p>
+</div>
+
+</div>
+</body>
+</html>
